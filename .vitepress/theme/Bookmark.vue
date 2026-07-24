@@ -1,22 +1,28 @@
 <script setup>
-import { ref, nextTick, watch } from 'vue'
+import { ref, nextTick, watch, onMounted } from 'vue'
 import { useRoute } from 'vitepress'
 
 const toast = ref('')
 const isDoc = ref(false)
 const route = useRoute()
 
-watch(
-  () => route.path,
-  async () => {
-    await nextTick()
-    // 等 DOM 渲染完再检测
-    setTimeout(() => {
-      isDoc.value = !!document.querySelector('.vp-doc')
-    }, 50)
-  },
-  { immediate: true }
-)
+function checkIsDoc() {
+  if (typeof document === 'undefined') return
+  setTimeout(() => {
+    isDoc.value = !!document.querySelector('.vp-doc')
+  }, 50)
+}
+
+onMounted(() => {
+  checkIsDoc()
+  watch(
+    () => route.path,
+    async () => {
+      await nextTick()
+      checkIsDoc()
+    }
+  )
+})
 
 function nearestHeading() {
   const hs = [...document.querySelectorAll('.vp-doc h1, .vp-doc h2, .vp-doc h3')]
