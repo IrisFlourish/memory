@@ -37,7 +37,7 @@ export default defineConfig({
     sidebar: {
       '/diary/': [
         { text: '🔖 书签', link: '/bookmarks' }
-        // 📖 目录 由 DiarySidebarList 组件动态渲染(自带 HMR,无需重启)
+        // 📖 目录 由 DiarySidebarList 组件动态渲染
       ],
       '/': [
         {
@@ -50,7 +50,8 @@ export default defineConfig({
         }
       ]
     },
-    docFooter: { prev: '上一篇', next: '下一篇' },
+    // 关掉默认 prev/next,交给 DiaryPrevNext 按日期渲染
+    docFooter: { prev: false, next: false },
     darkModeSwitchLabel: '主题',
     lightModeSwitchTitle: '切换到浅色',
     darkModeSwitchTitle: '切换到深色',
