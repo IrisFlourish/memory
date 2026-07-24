@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useRoute } from 'vitepress'
+import { useRoute, withBase } from 'vitepress'
 import { data as posts } from './diary-list.data'
 
 const route = useRoute()
@@ -27,7 +27,7 @@ const list = computed(() => posts)
     <ul v-show="!collapsed" class="diary-sidebar-items">
       <li v-for="post in list" :key="post.url">
         <a
-          :href="post.url"
+          :href="withBase(post.url)"
           class="diary-sidebar-link"
           :class="{ active: isActive(post.url) }"
         >
@@ -38,10 +38,10 @@ const list = computed(() => posts)
   </div>
 </template>
 
-<<style scoped>
+<style scoped>
 .diary-sidebar-list {
   padding: 0;
-  margin-top: -12px; /* 拉近 🔖书签 和 📖目录 */
+  margin-top: -12px;
 }
 .diary-sidebar-title {
   display: flex;
@@ -71,13 +71,13 @@ const list = computed(() => posts)
 .diary-sidebar-items {
   list-style: none;
   padding: 0;
-  margin: 2px 0 0; /* 目录标题和第一项之间贴近 */
+  margin: 2px 0 0;
 }
 .diary-sidebar-link {
   position: relative;
   display: block;
   padding: 3px 0 3px 12px;
-  font-size: 13px; /* 比标题小一号 */
+  font-size: 13px;
   color: var(--vp-c-text-2);
   text-decoration: none;
   border-left: 2px solid transparent;

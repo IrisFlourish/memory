@@ -46,7 +46,7 @@
       <a
         v-for="post in filtered"
         :key="post.url"
-        :href="post.url"
+        :href="withBase(post.url)"
         class="catalog-card"
       >
         <h2 class="catalog-title">{{ post.title }}</h2>
@@ -63,6 +63,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { withBase } from 'vitepress'
 import { data as posts } from './posts.data'
 
 function parseYM(p) {

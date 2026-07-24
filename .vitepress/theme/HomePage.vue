@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRouter } from 'vitepress'
+import { useRouter, withBase } from 'vitepress'
 import { data as posts } from './posts.data'
 
 const router = useRouter()
 const latestUrl = computed(() => posts[0]?.url || '/catalog')
 
 function go(url: string) {
-  router.go(url)
+  router.go(withBase(url))
 }
 </script>
 
@@ -27,10 +27,10 @@ function go(url: string) {
         <p class="hp-tagline">那些被记录的时间</p>
 
         <div class="hp-actions">
-          <a class="hp-btn primary" :href="latestUrl" @click.prevent="go(latestUrl)">
+          <a class="hp-btn primary" :href="withBase(latestUrl)" @click.prevent="go(latestUrl)">
             开始阅读 <span class="arrow">→</span>
           </a>
-          <a class="hp-btn ghost" href="/about" @click.prevent="go('/about')">
+          <a class="hp-btn ghost" :href="withBase('/about')" @click.prevent="go('/about')">
             关于
           </a>
         </div>
@@ -38,14 +38,14 @@ function go(url: string) {
 
       <!-- Entries -->
       <section class="hp-entries">
-        <a class="hp-entry" href="/catalog" @click.prevent="go('/catalog')">
+        <a class="hp-entry" :href="withBase('/catalog')" @click.prevent="go('/catalog')">
           <span class="hp-entry-icon">📖</span>
           <span class="hp-entry-body">
             <span class="hp-entry-title">目录</span>
             <span class="hp-entry-desc">朝花夕拾</span>
           </span>
         </a>
-        <a class="hp-entry" href="/bookmarks" @click.prevent="go('/bookmarks')">
+        <a class="hp-entry" :href="withBase('/bookmarks')" @click.prevent="go('/bookmarks')">
           <span class="hp-entry-icon">📌</span>
           <span class="hp-entry-body">
             <span class="hp-entry-title">书签</span>
@@ -89,7 +89,7 @@ function go(url: string) {
   line-height: 1;
   margin: 0;
   color: var(--vp-c-text-1);
-  padding-left: 0.18em; /* 视觉居中补偿字距 */
+  padding-left: 0.18em;
 }
 
 .hp-sub {
