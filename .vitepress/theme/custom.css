@@ -1,0 +1,187 @@
+/* ============ 浅色模式：米黄底 + 低饱和暖色 ============ */
+:root {
+  --vp-c-bg: #FBF6EC;
+  --vp-c-bg-alt: #F3EDDF;
+  --vp-c-bg-soft: #F5EFE3;
+  --vp-c-bg-elv: #FFFCF6;
+
+  --vp-c-brand-1: #B58374;
+  --vp-c-brand-2: #A67264;
+  --vp-c-brand-3: #8F5F52;
+  --vp-c-brand-soft: rgba(181, 131, 116, 0.14);
+
+  --vp-c-text-1: #3A342E;
+  --vp-c-text-2: #6B6259;
+  --vp-c-text-3: #948A7E;
+
+  --vp-c-divider: #E6DECE;
+  --vp-c-gutter: #E6DECE;
+
+  --vp-font-family-base: "Songti SC", "STSong", "SimSun", "Noto Serif SC", serif;
+  --vp-font-family-mono: "STFangsong", "FangSong", ui-monospace, monospace;
+}
+
+/* ============ 暗色模式 ============ */
+.dark {
+  --vp-c-bg: #201E1B;
+  --vp-c-bg-alt: #191816;
+  --vp-c-bg-soft: #2A2724;
+  --vp-c-bg-elv: #2A2724;
+
+  --vp-c-text-1: #EAE3D5;
+  --vp-c-text-2: #B0A89B;
+  --vp-c-text-3: #857D71;
+
+  --vp-c-divider: #3A342E;
+  --vp-c-gutter: #2A2724;
+
+  --vp-c-brand-1: #D6A697;
+  --vp-c-brand-2: #C4948A;
+  --vp-c-brand-3: #B58374;
+}
+
+/* ============ 正文排版 ============ */
+.vp-doc p {
+  text-indent: 2em;      /* 首行缩进 2 字 */
+  line-height: 1.9;
+  font-size: 16.5px;
+  letter-spacing: 0.01em;
+}
+
+/* 标题用楷体做修饰 */
+.vp-doc h1, .vp-doc h2, .vp-doc h3, .vp-doc h4, .vp-doc h5 {
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "Noto Serif SC", serif;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+.vp-doc h1 { font-size: 2em; }
+.vp-doc h2 { font-size: 1.5em; margin-top: 2em; }
+.vp-doc h3 { font-size: 1.2em; }
+
+/* 引用块用仿宋，做成暖色卡片 */
+.vp-doc blockquote {
+  font-family: "STFangsong", "FangSong", "Songti SC", serif;
+  border-left: 3px solid var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  padding: 0.6em 1.1em;
+  border-radius: 6px;
+  color: var(--vp-c-text-1);
+}
+.vp-doc blockquote p {
+  text-indent: 0;
+  margin: 0.3em 0;
+}
+
+/* 列表项里的段落不要缩进 */
+.vp-doc li p { text-indent: 0; }
+
+/* 加粗用一点点暖色，不那么呆板 */
+.vp-doc strong { color: var(--vp-c-brand-3); }
+.dark .vp-doc strong { color: var(--vp-c-brand-1); }
+
+/* 首页标题也用楷体 */
+.VPHero .name, .VPHero .text {
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif !important;
+}
+
+/* 顶部导航栏更轻 */
+.VPNav {
+  background: var(--vp-c-bg) !important;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+/* 高亮卡片（放歌词那种）:::tip / :::info */
+.vp-doc .custom-block {
+  border-radius: 8px;
+  border: none;
+  padding: 14px 18px;
+}
+.vp-doc .custom-block.tip {
+  background: #F3E9D8;
+  color: #5A4A38;
+}
+.dark .vp-doc .custom-block.tip {
+  background: #33291E;
+  color: #E6D6BE;
+}
+.vp-doc .custom-block p { text-indent: 0; }
+
+/* 移动端：宽度自适应，去掉左右过多留白 */
+@media (max-width: 768px) {
+  .vp-doc p { font-size: 16px; line-height: 1.85; }
+  .VPDoc .content-container { padding: 0 4vw; }
+}
+
+/* 滚动条低调一点 */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 4px;
+}
+/* ============ 彩色卡片 ============ */
+.paper-card {
+  margin: 1.4em 0;
+  padding: 0.9em 1.2em 1em;
+  border-radius: 6px;
+  border-left: 4px solid var(--card-accent, #c98a5b);
+  background: var(--card-bg, #f0e9dd);
+  color: #3d342a;
+  line-height: 1.75;
+}
+.paper-card > .paper-card-title {
+  margin: 0 0 0.4em;
+  font-weight: bold;
+  font-size: 0.92em;
+  letter-spacing: 0.08em;
+  color: var(--card-accent, #c98a5b);
+}
+.paper-card > :last-child { margin-bottom: 0; }
+
+/* 歌词 —— 湖青（用仿宋更有味） */
+.paper-card-lyric {
+  --card-accent: #7fa9ae;
+  --card-bg: #e6efee;
+  font-family: 'STFangsong', 'FangSong', serif;
+}
+/* 备忘 / 私语 —— 梅紫 */
+.paper-card-memo {
+  --card-accent: #8a7095;
+  --card-bg: #ece1ec;
+}
+/* 引用别人的话 —— 灰绿 */
+.paper-card-quote {
+  --card-accent: #94a684;
+  --card-bg: #ecece0;
+  font-family: 'STFangsong', 'FangSong', serif;
+}
+/* 高亮 / 重点 —— 暖橘 */
+.paper-card-highlight {
+  --card-accent: #c98a5b;
+  --card-bg: #f2e6d5;
+}
+/* 笔记 / 想法 —— 藏青 */
+.paper-card-note {
+  --card-accent: #6b8ca8;
+  --card-bg: #e0e7ee;
+}
+/* 心动 / 喜欢 —— 樱粉 */
+.paper-card-love {
+  --card-accent: #c47b8f;
+  --card-bg: #f2e2e7;
+}
+/* 梦 / 幻想 —— 夜蓝 */
+.paper-card-dream {
+  --card-accent: #6d7ba8;
+  --card-bg: #e2e4ee;
+  font-style: italic;
+}
+/* ============ 大纲收起 ============ */
+html.hide-aside .VPDocAside {
+  display: none !important;
+}
+html.hide-aside .VPDoc.has-aside .container {
+  max-width: 768px;
+}
+html.hide-aside .VPDoc.has-aside .content {
+  padding-right: 0 !important;
+}
