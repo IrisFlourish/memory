@@ -9,10 +9,24 @@ import CatalogPage from './CatalogPage.vue'
 import DiarySidebarList from './DiarySidebarList.vue'
 import './custom.css'
 
+// 去掉 base 前缀，得到站内相对路径
+function stripBase(path: string) {
+  const base = (import.meta as any).env.BASE_URL as string // 例如 '/memory/'
+  if (base && base !== '/' && path.startsWith(base)) {
+    return '/' + path.slice(base.length)
+  }
+  return path
+}
+
 // 判断当前是否为日记正文页(排除 /diary 和 /diary/index)
 function isDiaryArticle(path: string) {
-  const p = path.replace(/\.html$/, '').replace(/\/$/, '')
+  const p = stripBase(path).replace(/\.html$/, '').replace(/\/$/, '')
   return p.startsWith('/diary/') && p !== '/diary' && p !== '/diary/index'
+}
+
+// 判断是否在日记板块内(包括列表页和文章页)
+function isInDiarySection(path: string) {
+  return stripBase(path).startsWith('/diary/')
 }
 
 export default {
@@ -23,7 +37,7 @@ export default {
       'layout-bottom': () =>
         isDiaryArticle(route.path) ? h(Bookmark) : null,
       'sidebar-nav-after': () =>
-        route.path.startsWith('/diary/') ? h(DiarySidebarList) : null
+        isInDiarySection(route.path) ? h(DiarySidebarList) : null
     })
   },
   enhanceApp({ app }) {

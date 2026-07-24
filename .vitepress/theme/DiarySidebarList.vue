@@ -7,7 +7,12 @@ const route = useRoute()
 const collapsed = ref(false)
 
 const isActive = (url: string) => {
-  const current = decodeURIComponent(route.path).replace(/\.html$/, '').replace(/\/$/, '')
+  const base = (import.meta as any).env.BASE_URL as string
+  let current = decodeURIComponent(route.path)
+  if (base && base !== '/' && current.startsWith(base)) {
+    current = '/' + current.slice(base.length)
+  }
+  current = current.replace(/\.html$/, '').replace(/\/$/, '')
   return current === url
 }
 
