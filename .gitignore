@@ -22,3 +22,18 @@ npm-debug.log*
 .env
 .env.local
 .env.*.local
+
+# 依赖和构建产物
+node_modules/
+.vitepress/dist/
+.vitepress/cache/
+.DS_Store
+node_modules/
+.vitepress/dist/
+.vitepress/cache/
+.DS_Store
+
+node_modules/
+.vitepress/dist/
+.vitepress/cache/
+.DS_Store
