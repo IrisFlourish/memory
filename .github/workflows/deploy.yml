@@ -35,6 +35,28 @@ jobs:
       - name: Build with VitePress
         run: npm run docs:build
 
+      - name: Install StatiCrypt
+        run: npm install -g staticrypt
+
+      - name: Encrypt site with password
+        env:
+          SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
+        run: |
+          staticrypt \
+            --recursive \
+            --password "$SITE_PASSWORD" \
+            --short \
+            --template-color-primary "#4a5568" \
+            --template-color-secondary "#e2e8f0" \
+            --template-title "Iris's Memory" \
+            --template-instructions "请输入密码查看" \
+            --template-button "进入" \
+            --template-placeholder "密码" \
+            --remember 30 \
+            --template-remember "记住我 30 天" \
+            -d .vitepress/dist \
+            .vitepress/dist
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
