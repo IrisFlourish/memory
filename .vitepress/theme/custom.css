@@ -185,3 +185,19 @@ html.hide-aside .VPDoc.has-aside .container {
 html.hide-aside .VPDoc.has-aside .content {
   padding-right: 0 !important;
 }
+/* 日记文章页：放大文章 H1 标题 */
+.VPDoc[class*="diary"] h1,
+.VPDoc h1 {
+  font-size: 2.4rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-top: 0.2em;
+  margin-bottom: 0.6em;
+}
+
+/* 移动端稍微收一点 */
+@media (max-width: 640px) {
+  .VPDoc h1 {
+    font-size: 1.9rem;
+  }
+}
