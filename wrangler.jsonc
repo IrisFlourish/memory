@@ -2,6 +2,6 @@
   "name": "memory",
   "compatibility_date": "2025-07-28",
   "assets": {
-    "directory": "./docs/.vitepress/dist"
+    "directory": "./.vitepress/dist"
   }
 }
