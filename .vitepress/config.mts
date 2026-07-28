@@ -22,7 +22,6 @@ export default defineConfig({
   base: '/memory/',
   description: '',
   lang: 'zh-CN',
-  lastUpdated: true,
   cleanUrls: true,
   markdown: {
     config: (md) => {
@@ -57,7 +56,6 @@ export default defineConfig({
     darkModeSwitchTitle: '切换到深色',
     sidebarMenuLabel: '菜单',
     returnToTopLabel: '返回顶部',
-    lastUpdatedText: '最后更新',
     search: {
       provider: 'local',
       options: {
