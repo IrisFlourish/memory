@@ -19,7 +19,7 @@ function makeCard(md: MarkdownIt, name: string) {
 
 export default defineConfig({
   title: '任意门',
-  base: '/memory/',
+  base: '/',
   description: '',
   lang: 'zh-CN',
   cleanUrls: true,
